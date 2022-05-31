@@ -18,6 +18,6 @@ pip install zparse
 
 # Documentation
 
-Documentation can be found at [here](https://fix_this_link.com).
+Documentation can be found at [here](https://hadrian-reppas.github.io/zparse/index.html).
 
 The `/docs` directory contains the markdown source files.
