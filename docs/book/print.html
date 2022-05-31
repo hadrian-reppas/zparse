@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>zparse</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="getting_started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="grammars.html"><strong aria-hidden="true">2.</strong> Grammars</a></li><li class="chapter-item expanded "><a href="api.html"><strong aria-hidden="true">3.</strong> zparse API</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tokenization.html"><strong aria-hidden="true">3.1.</strong> Tokenization</a></li><li class="chapter-item expanded "><a href="parsing.html"><strong aria-hidden="true">3.2.</strong> Parsing</a></li><li class="chapter-item expanded "><a href="errors.html"><strong aria-hidden="true">3.3.</strong> Errors</a></li></ol></li><li class="chapter-item expanded "><a href="advanced.html"><strong aria-hidden="true">4.</strong> Advanced Features</a></li><li class="chapter-item expanded "><a href="bibliography.html"><strong aria-hidden="true">5.</strong> Bibliography</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">zparse</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<p>The easiest way to install zparse with from <a href="https://https://pypi.org/">PyPi</a>:</p>
+<pre><code>pip install zparse
+</code></pre>
+<h2 id="basic-usage"><a class="header" href="#basic-usage">Basic Usage</a></h2>
+<p>Using zparse starts with writing a grammar. Grammars are described in a python-like version of <a href="https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form">EBNF</a>. Details on writing grammars can be found on the <a href="./grammars.html">Grammars</a> page. You can use raw multiline strings or store your grammars in files:</p>
+<pre><code>grammar = r'''
+_INT: ('0'-'9')+
+start: '[' _INT (',' _INT)* ']'
+'''
+</code></pre>
+<pre><code>grammar = open('grammar.peg').read()
+</code></pre>
+<p>Once you have your grammar, pass it to the <code>make_parser</code> method:</p>
+<pre><code>ParserClass = zparse.make_parser(grammar)
+</code></pre>
+<p><code>make_parser</code> returns a type which must then be instantiated with the code you want to parse. Call the <code>parse</code> method on the parser object to get the parse tree:</p>
+<pre><code>parser = ParserClass(code)
+parse_tree = parser.parse()
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="grammars"><a class="header" href="#grammars">Grammars</a></h1>
+<p>zparse accepts <a href="https://en.wikipedia.org/wiki/Parsing_expression_grammar">PEG</a> grammars. zparse grammars contain four elements: rule definitions, token definitions, token declarations, and fragment definitions.</p>
+<h2 id="fragment-definitions"><a class="header" href="#fragment-definitions">Fragment Definitions</a></h2>
+<p>Fragment definitions look like this:</p>
+<pre><code>_INT: ('0'-'9')+
+</code></pre>
+<p>The left hand side of the definitions contains the fragment's name. Fragment names are written in all caps and begin with an underscore. The right hand side contains a regular expression. Regular expression can contain 8 elements:</p>
+<ol>
+<li>string literals (<code>'abc'</code>, <code>'if'</code>)</li>
+<li>ranges (<code>'a'-'z'</code>, <code>'0'-'9'</code>)</li>
+<li>zero or more (<code>'a'*</code>, <code>('a'-'z')*</code>)</li>
+<li>one or more (<code>'a'+</code>, <code>('a'-'z')+</code>)</li>
+<li>optional (<code>'a'?</code>, <code>('a'-'z')?</code>)</li>
+<li>concatenation (<code>'a' 'b'</code>, <code>'a'* 'b'+</code>)</li>
+<li>option (<code>'a' | 'b'</code>)</li>
+<li>reference to another fragment (<code>_FRAG+</code>)</li>
+</ol>
+<h2 id="token-declarations"><a class="header" href="#token-declarations">Token Declarations</a></h2>
+<p>Token declarations are just a token name followed by a newline. Token names are written in all caps, but do not start with an underscore. Token declarations are useful when you want to use custom code to emit tokens. For example, the Python grammar contains <code>INDENT</code> and <code>DEDENT</code> tokens, but those don't correspond to regular expressions:</p>
+<pre><code>IDENT
+DEDENT
+</code></pre>
+<h2 id="token-definitions"><a class="header" href="#token-definitions">Token Definitions</a></h2>
+<p>Token definitions look like this:</p>
+<pre><code>WHITE_SPACE: {self.ws}? (' ' | '\t' | '\n')+ @ignore
+</code></pre>
+<p>Token declarations can contain all the elements from fragments. They can also contain tags (like <code>@ignore</code>) and predicates (like <code>{self.ws}</code>) which are explained on the <a href="./advanced.html">advanced features</a> page. Unlike fragment definitions, token definitions cannot reference other token definitions.</p>
+<h2 id="rule-definitions"><a class="header" href="#rule-definitions">Rule Definitions</a></h2>
+<p>Fragment definitions, token declarations, and token definitions all describe tokenization. Rule definitions describe parsing.</p>
+<pre><code>expr
+  : INT
+  | '(' expr ')'
+  | expr '**' expr !right_assoc
+  | '-' expr
+  | expr ('*' | '/') expr
+  | expr ('+' | '-') expr
+</code></pre>
+<p>Rule must contain at least one lowercase letter and cannot start with an underscore. Rule definitions can contains references to other rules, themselves, and tokens, but cannot reference fragments directly. Rules can contain directives (<code>!right_assoc</code>), but only at the top level (so <code>rule: a (b | c !right_assoc) | d</code> would not be allowed). Any definitions can extend past a single line, but subsequent lines must be indented.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="zparse-api"><a class="header" href="#zparse-api">zparse API</a></h1>
+<p>The zparse API is split into three sections:</p>
+<ul>
+<li><a href="./tokenization.html">Tokenization</a></li>
+<li><a href="./parsing.html">Parsing</a></li>
+<li><a href="./errors.html">Errors</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tokenization"><a class="header" href="#tokenization">Tokenization</a></h1>
+<h2 id="make_tokenizergrammar-str---type"><a class="header" href="#make_tokenizergrammar-str---type"><code>make_tokenizer(grammar: str) -&gt; type</code></a></h2>
+<p>The <code>make_tokenizer</code> function creates a tokenizer class from a grammar. For example:</p>
+<pre><code>TokenizerClass = zparse.make_tokenizer(grammar)
+</code></pre>
+<p>Once the tokenizer's class is created, we instantiate that class with the code we want to tokenize:</p>
+<pre><code>tokenizer = TokenizerClass(code)
+</code></pre>
+<h3 id="tokenizerclasstokensself---generatortoken"><a class="header" href="#tokenizerclasstokensself---generatortoken"><code>TokenizerClass.tokens(self) -&gt; Generator[Token]</code></a></h3>
+<p>The <code>tokens</code> method is called on the tokenizer object to find the tokens. The </p>
+<pre><code>tokens = parser.parse()
+</code></pre>
+<h2 id="token"><a class="header" href="#token"><code>Token</code></a></h2>
+<p>The <code>Token</code> class represents a token in the token stream.</p>
+<h3 id="tokenkind-str"><a class="header" href="#tokenkind-str"><code>Token.kind: str</code></a></h3>
+<p>The token name (like <code>'INT'</code> and <code>'WS'</code>).</p>
+<h3 id="tokentext-str"><a class="header" href="#tokentext-str"><code>Token.text: str</code></a></h3>
+<p>The text captured by the regular expression (like <code>'34'</code> and <code>' \t'</code>).</p>
+<h3 id="tokenline-int"><a class="header" href="#tokenline-int"><code>Token.line: int</code></a></h3>
+<p>The Token's line number. If the token spans over multiple lines, this field contains the starting line.</p>
+<h3 id="tokencolumn-int"><a class="header" href="#tokencolumn-int"><code>Token.column: int</code></a></h3>
+<p>The Token's column number.</p>
+<h3 id="tokencode-str"><a class="header" href="#tokencode-str"><code>Token.code: str</code></a></h3>
+<p>A reference to all the code that is being tokenized.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="parsing"><a class="header" href="#parsing">Parsing</a></h1>
+<h2 id="make_parsergrammar-str---type"><a class="header" href="#make_parsergrammar-str---type"><code>make_parser(grammar: str) -&gt; type</code></a></h2>
+<p>The <code>make_parser</code> function creates a parser class from a grammar. For example:</p>
+<pre><code>ParserClass = zparse.make_parser(grammar)
+</code></pre>
+<p>Internally, this calls the <code>make_tokenizer</code> method. Once the parser's class is created, we instantiate that class with the code we want to parse:</p>
+<pre><code>parser = ParserClass(code)
+</code></pre>
+<h3 id="parserclassparseself---node"><a class="header" href="#parserclassparseself---node"><code>ParserClass.parse(self) -&gt; Node</code></a></h3>
+<p>The <code>parse</code> method is called on the parser object to find the parse tree:</p>
+<pre><code>parse_tree = parser.parse()
+</code></pre>
+<h2 id="node"><a class="header" href="#node"><code>Node</code></a></h2>
+<p>The <code>Node</code> class describes the parse tree. Each node contains a <code>str</code> with the name of the rule it was created from. It also contains a list of all of its children.</p>
+<h3 id="nodekind-str"><a class="header" href="#nodekind-str"><code>Node.kind: str</code></a></h3>
+<p>The name of the rule this node was expanded from.</p>
+<h3 id="nodechildren-listnode--token"><a class="header" href="#nodechildren-listnode--token"><code>Node.children: list[Node | Token]</code></a></h3>
+<p>A list containing all of this node's terminal and nonterminal children in order.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="errors"><a class="header" href="#errors">Errors</a></h1>
+<p>zparse defines three errors.</p>
+<h2 id="grammarerror"><a class="header" href="#grammarerror"><code>GrammarError</code></a></h2>
+<p>A <code>GrammarError</code> is thrown when a grammar is malformed. This includes syntax errors and logical errors (like recursion in fragment definitions and rules that reference fragments).</p>
+<h3 id="grammarerrormsg-str"><a class="header" href="#grammarerrormsg-str"><code>GrammarError.msg: str</code></a></h3>
+<p>This field contains a description of the error.</p>
+<h3 id="grammarerrortokens-listtoken"><a class="header" href="#grammarerrortokens-listtoken"><code>GrammarError.tokens: list[Token]</code></a></h3>
+<p>This field contains a list of the offending tokens. It may be empty if there is a syntax error and tokenization fails.</p>
+<h2 id="tokenerror"><a class="header" href="#tokenerror"><code>TokenError</code></a></h2>
+<p>A <code>TokenError</code> is thrown during parsing when none of the token definitions match the input.</p>
+<h3 id="tokenerrormsg-str"><a class="header" href="#tokenerrormsg-str"><code>TokenError.msg: str</code></a></h3>
+<p>This field contains a description of the error.</p>
+<h2 id="parseerror"><a class="header" href="#parseerror"><code>ParseError</code></a></h2>
+<p>A <code>ParseError</code> is thrown during parsing when none of the token definitions match the input.</p>
+<h3 id="parseerrormsg-str"><a class="header" href="#parseerrormsg-str"><code>ParseError.msg: str</code></a></h3>
+<p>This field contains a description of the error.</p>
+<h3 id="parseerrortokens-listtoken"><a class="header" href="#parseerrortokens-listtoken"><code>ParseError.tokens: list[Token]</code></a></h3>
+<p>This field contains the offending tokens. It usually contains a single token.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="advanced-features"><a class="header" href="#advanced-features">Advanced Features</a></h1>
+<h2 id="advanced-tokenization"><a class="header" href="#advanced-tokenization">Advanced Tokenization</a></h2>
+<p>Tags are created by passing the keyword argument <code>base: type</code> to the <code>make_tokenizer</code> function. The tokenizer class it outputs will subclass this base class. The base class you input must subclass <code>zparse.BaseTokenizer</code>. Each tag in your grammar must be defined as a function in your base class. As an example, we can take the <code>@ignore</code> tag, which is already defined in <code>zparse.BaseTokenizer</code>. It's definition is simple:</p>
+<pre><code class="language-python">def ignore(self, token: Token):
+    return
+</code></pre>
+<p>When a token is matched in the input stream, instead of being emitted directly, it is passed through the corresponding method. In most languages, whitespace is ignored. So if we match a whitespace token, we want to throw it out. The <code>@ignore</code> tac accomplishes this because the <code>ignore</code> method takes in the token and does not emit anything.</p>
+<p>More sophisticated tag methods are not hard to imagine. For example, tokenization of Python code requires special examination of whitespace characters because indentation matters. In this case, the <code>@handle_whitespace</code> tag must analyze each whitespace token and emit <code>INDENT</code> and <code>DEDENT</code> tokens as needed using <code>yield</code> statements.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bibliography"><a class="header" href="#bibliography">Bibliography</a></h1>
+<p>Ford, B. (2002). Packrat Parsing: Simple, Powerful, Lazy, Linear Time.</p>
+<p>Warth, A., Douglass, J., &amp; Millstein, T. (2008). Packrat Parsers can Support Left Recursion.</p>
+<p>Grimm, R. (2004). Practical Packrat Parsing.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>
